@@ -1,0 +1,80 @@
+http://polygant.net/opencex
+OpenCEX es una plataforma de intercambio de criptomonedas gratuita y de código abierto.
+Desarrollado por Polygant .
+
+Demostración en vivo | Documentación OpenCEX | chat de telegrama
+
+Principales características.
+Cartera de custodia que admite BTC, ETH, BNB, TRX, USDT (ERC-20, BEP-20, TRC-20). Depósito y retiro.
+Motor de emparejamiento de pedidos. Pares comerciales BTC-USDT, ETH-USDT, BNB-USDT, TRX-USDT.
+Interfaz de intercambio profesional para realizar pedidos.
+Interfaz simplificada para un intercambio rápido.
+Verificación de transacciones KYT (requiere claves Scorechain).
+Verificación KYC de usuarios (requiere claves Sumsub).
+SMS 2fa para usuarios (requiere claves Twilio).
+Requisitos del sistema.
+Mínimo	Recomendado
+CPU: 4 núcleos
+RAM: 16 GB
+Discos: 40 GB
+SO: Ubuntu 22.04
+
+https://www.hetzner.com/cloud	CPU: 8 núcleos
+RAM: 64 Gb
+Discos: 2x1Tb NVMe SSD
+SO: Ubuntu 22.04
+
+https://www.hetzner.com/dedicated-rootserver/ax51-nvme
+El software utilizado.
+Estibador	el último	Virtualización a nivel de sistema operativo
+NGINX	1.22.0	Servidor web
+Caddie	2.6.2	Enrutador
+Postgres	14.5	RDBMS
+servidor redis	7.0.4	RDBMS
+ConejoMQ	3.10.7	Software de intermediación de mensajes
+Pitón	3.8	Lenguaje de programación
+Django	3.2.7	Marco de Python
+VUE.JS	3.2.25	marco JS
+NUXT.JS	2.15.7	marco JS
+Núcleo de Bitcoin	el último	nodo bitcoin
+Antes de instalar:
+Mira el vídeo de instalación https://youtu.be/c-WnQkvBwf0
+Solicite un servidor virtual o físico, que no esté por debajo de los requisitos mínimos. Necesitará acceso completo a este servidor (raíz). El alojamiento compartido no funcionará.
+Vincula la dirección IPv4 que recibiste al comprar el servidor a tu dominio. Si aún no tiene un dominio, puede usar https://nip.io/ o https://sslip.io/ .
+Regístrese para obtener una cuenta de Google y obtenga claves reCAPTCHA V2 (invisibles). https://www.google.com/recaptcha/
+Obtenga las credenciales del servidor SMTP para enviar correos electrónicos (cualquiera servirá, es decir, https://www.mailgun.com/ ).
+Registre una cuenta de Infura ( https://infura.io/ ) y cree una clave API + secreto.
+Registre una cuenta de Etherscan ( https://etherscan.io/ ) y cree una clave API.
+Necesitará direcciones BTC, ETH y direcciones BNB, TRX (opcional) para cobrar depósitos de criptomonedas (direcciones frías). Si aún no lo tienes, puedes usar cualquier billetera multidivisa como Trust Wallet y generar direcciones BTC, ETH, BNB, TRX.
+OPCIONAL. Para compatibilidad con BNB y BEP-20, necesitará las credenciales de Bscscan ( https://bscscan.com/ )
+OPCIONAL. Para compatibilidad con TRX y TRC-20, necesitará las credenciales de Trondrid ( https://www.trongrid.io/ )
+OPCIONAL. Para la verificación por SMS necesitará las credenciales de Twilio ( https://twilio.com )
+OPCIONAL. Para KYT necesita credenciales de Scorechain ( https://www.scorechain.com/ )
+OPCIONAL. Para KYC necesitará las credenciales de Sumsub ( https://sumsub.com/ )
+Instalación
+Debe ingresar SSH a su servidor como root y ejecutar el siguiente comando:
+
+mkdir /app ; 
+cd /app/ || exit ; 
+git clone https://github.com/Polygant/OpenCEX.git ./deploy ;
+cd deploy ; 
+chmod +x opencex.sh ;
+./opencex.sh 2>&1 | tee /tmp/install.txt
+Tiempo de instalación ~ 5 minutos.
+
+Si algo sale mal, puedes limpiar la instalación y volver a intentarlo.
+
+cd /app/opencex && docker compose down ; 
+rm -rf /app ;
+docker system prune -a
+🥳 ¡Felicitaciones, el intercambio se ha instalado exitosamente!
+Puede abrirlo por su nombre de dominio.
+
+Después de la instalación, debe descargar el archivo /app/openex/backend/save_to_self_and_delete.txt y eliminarlo del servidor.
+
+Tenga en cuenta que el nodo BTC tardará hasta 30 horas en sincronizarse completamente. Las transacciones BTC enviadas a direcciones de usuarios durante este período se recopilarán y acreditarán solo después de una sincronización completa.
+
+Documentación
+Centro de ayuda OpenCEX
+Guía del panel de administración
+Socios y patrocinadores ❤️
